@@ -36,7 +36,7 @@ fun CoinDetailScreen(
         state.coin?.let { coin ->
             LazyColumn(
                 modifier = Modifier.fillMaxSize(),
-                contentPadding = PaddingValues(20.dp)
+                contentPadding = PaddingValues(12.dp)
             ) {
                 item {
                     Spacer(modifier = Modifier.height(16.dp))
@@ -46,7 +46,7 @@ fun CoinDetailScreen(
                     ) {
                         Text(
                             text = "${coin.rank}. ${coin.name}  ( ${coin.symbol})",
-                            style = MaterialTheme.typography.titleMedium,
+                            style = MaterialTheme.typography.titleLarge,
                             overflow = TextOverflow.Ellipsis
                         )
                         Text(
@@ -92,7 +92,6 @@ fun CoinDetailScreen(
                         teamMember = teamMember,
                         modifier = Modifier
                             .fillMaxWidth()
-                            .padding(10.dp)
                     )
                     Divider()
                 }
