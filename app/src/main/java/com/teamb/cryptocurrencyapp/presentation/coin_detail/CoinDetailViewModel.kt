@@ -1,5 +1,6 @@
 package com.teamb.cryptocurrencyapp.presentation.coin_detail
 
+import android.util.Log
 import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.SavedStateHandle
@@ -25,7 +26,9 @@ class CoinDetailViewModel @Inject constructor(
 
     init {
         savedStateHandle.get<String>(Constants.COIN_ID)?.let {
-            getCoinDetails(it)
+            val str = it.replace("{", "")
+                .replace("}", "")
+            getCoinDetails(str)
         }
     }
 
