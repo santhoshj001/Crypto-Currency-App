@@ -15,6 +15,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontStyle.Companion.Italic
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
@@ -44,20 +45,19 @@ fun CoinDetailScreen(
                         horizontalArrangement = Arrangement.SpaceBetween
                     ) {
                         Text(
-                            text = "${coin.rank}. ${coin.name} (${coin.symbol})",
-                            style = MaterialTheme.typography.titleLarge,
-                            modifier = Modifier.weight(8f)
+                            text = "${coin.rank}. ${coin.name}  ( ${coin.symbol})",
+                            style = MaterialTheme.typography.titleMedium,
+                            overflow = TextOverflow.Ellipsis
                         )
                         Text(
-                            text = if (coin.isActive) "active" else "inactive",
+                            text = if (coin.isActive) " Active " else "InActive",
                             color = if (coin.isActive)
                                 MaterialTheme.colorScheme.primary
                             else
                                 MaterialTheme.colorScheme.error,
-                            textAlign = TextAlign.End,
-                            modifier = Modifier
-                                .align(CenterVertically)
-                                .weight(2f)
+                            style = MaterialTheme.typography.bodySmall,
+                            modifier = Modifier.align(CenterVertically),
+                            textAlign = TextAlign.End
                         )
                     }
                     Spacer(modifier = Modifier.height(15.dp))

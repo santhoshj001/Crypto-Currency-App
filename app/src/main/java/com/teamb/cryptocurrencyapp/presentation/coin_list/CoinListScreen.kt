@@ -1,5 +1,7 @@
 package com.teamb.cryptocurrencyapp.presentation.coin_list
 
+import androidx.compose.foundation.ExperimentalFoundationApi
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -20,6 +22,7 @@ import androidx.navigation.NavController
 import com.teamb.cryptocurrencyapp.domain.model.Coin
 import com.teamb.cryptocurrencyapp.presentation.Screen
 
+@OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun CoinListScreen(
     navController: NavController,
@@ -31,6 +34,17 @@ fun CoinListScreen(
 
 
         LazyColumn(Modifier.fillMaxWidth()) {
+
+            stickyHeader {
+                Text(
+                    text = "CRYPTO-CURRENCY",
+                    textAlign = TextAlign.Center,
+                    color = MaterialTheme.colorScheme.primary,
+                    modifier = Modifier
+                        .background(MaterialTheme.colorScheme.background)
+                        .fillMaxWidth().padding(24.dp)
+                )
+            }
             items(state.coins) { coin: Coin ->
                 CoinListItem(coin = coin, onItemClick = {
                     navController.navigate(Screen.CoinDetailScreen.route + "/{${coin.id}}")
