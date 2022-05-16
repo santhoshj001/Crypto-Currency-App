@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.CircularProgressIndicator
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -25,8 +26,11 @@ fun CoinListScreen(
     viewModel: CoinListViewModel = hiltViewModel()
 ) {
     val state = viewModel.state.value
+
     Box(modifier = Modifier.fillMaxSize()) {
-        LazyColumn(Modifier.fillMaxSize()) {
+
+
+        LazyColumn(Modifier.fillMaxWidth()) {
             items(state.coins) { coin: Coin ->
                 CoinListItem(coin = coin, onItemClick = {
                     navController.navigate(Screen.CoinDetailScreen.route + "/{${coin.id}}")
@@ -38,7 +42,7 @@ fun CoinListScreen(
             Text(
                 text = state.error,
                 textAlign = TextAlign.Center,
-                color = Color.Green,
+                color = MaterialTheme.colorScheme.error,
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(16.dp)

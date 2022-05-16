@@ -49,8 +49,11 @@ fun CoinDetailScreen(
                             modifier = Modifier.weight(8f)
                         )
                         Text(
-                            text = if(coin.isActive) "active" else "inactive",
-                            color = if(coin.isActive) Color.Green else Color.Red,
+                            text = if (coin.isActive) "active" else "inactive",
+                            color = if (coin.isActive)
+                                MaterialTheme.colorScheme.primary
+                            else
+                                MaterialTheme.colorScheme.error,
                             textAlign = TextAlign.End,
                             modifier = Modifier
                                 .align(CenterVertically)
@@ -95,7 +98,7 @@ fun CoinDetailScreen(
                 }
             }
         }
-        if(state.error.isNotBlank()) {
+        if (state.error.isNotBlank()) {
             Text(
                 text = state.error,
                 color = MaterialTheme.colorScheme.error,
@@ -106,7 +109,7 @@ fun CoinDetailScreen(
                     .align(Alignment.Center)
             )
         }
-        if(state.isLoading) {
+        if (state.isLoading) {
             CircularProgressIndicator(modifier = Modifier.align(Alignment.Center))
         }
     }
